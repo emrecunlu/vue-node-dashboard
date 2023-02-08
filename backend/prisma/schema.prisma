@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Menu {
+  id        Int       @id @default(autoincrement())
+  title     String    @db.VarChar(255)
+  slug      String    @db.VarChar(255)
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Content   Content[]
+}
+
+model Content {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(255)
+  brief     String   @db.VarChar(50)
+  markdown  String   @db.Text
+  slug      String   @db.VarChar(255)
+  icon      String?  @db.VarChar(255)
+  image     String?  @db.VarChar(255)
+  menu      Menu     @relation(fields: [menuId], references: [id])
+  menuId    Int      @db.Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(25)
+  surname   String   @db.VarChar(25)
+  username  String   @db.VarChar(25)
+  password  String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

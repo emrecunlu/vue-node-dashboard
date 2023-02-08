@@ -1,0 +1,15 @@
+<% include('../helpers/File.ts') %>
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<img src="http://localhost:5000/images/<%= resize('11bc1d5e-1bc5-4995-8d2f-94fc895aa4d1.png', 20, 20) %>" width="20" height="20">
+		<img src="http://localhost:5000/images/<%= resize('11bc1d5e-1bc5-4995-8d2f-94fc895aa4d1.png', 104, 104) %>" width="152" height="148">
+	</body>
+</html>
